@@ -26,6 +26,7 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 vim.opt.undofile = true
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.foldlevelstart = 99
 vim.opt.autoread = true
 vim.opt.shada = { "'10", "<0", "s10", "h" }
 vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
@@ -132,7 +133,7 @@ treesitter.install({
     "bash", "fish",
     "toml", "yaml", "json",
     "vim", "vimdoc",
-    "c", "go", "lua", "odin", "zig", "python"
+    "c", "go", "lua", "odin", "zig", "python", "javascript", "typescript"
 })
 
 vim.api.nvim_create_autocmd('FileType', {
@@ -140,6 +141,7 @@ vim.api.nvim_create_autocmd('FileType', {
     callback = function()
         vim.treesitter.start()
         vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        vim.wo.foldmethod = 'expr'
         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     end,
 })
@@ -147,7 +149,7 @@ vim.api.nvim_create_autocmd('FileType', {
 -- ================================================================================================
 -- LSP
 -- ================================================================================================
-vim.lsp.enable({ "gopls", "ols", "zls" })
+vim.lsp.enable({ "gopls", "ols", "zls", "ts_ls" })
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
