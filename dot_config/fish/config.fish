@@ -11,6 +11,9 @@ set -gx EDITOR nvim
 set -gx KUBE_EDITOR nvim
 set -gx MANPAGER "nvim +Man!"
 
+bind \cY accept-autosuggestion
+bind \cE edit_command_buffer
+
 alias vim "nvim"
 alias k "kubectl"
 alias lg "lazygit"
@@ -19,8 +22,9 @@ if type -q bat
     alias cat "bat"
 end
 
-bind \cY accept-autosuggestion
-bind \cE edit_command_buffer
+if type -q dn 
+    dn init fish | source
+end
 
 if type -q mise 
     if status is-interactive
