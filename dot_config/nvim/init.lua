@@ -62,12 +62,25 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
+vim.api.nvim_create_autocmd("OptionSet", {
+    pattern = "background",
+    callback = function()
+        if vim.o.background == "light" then
+            vim.cmd.colorscheme("dayfox")
+        end
+        if vim.o.background == "dark" then
+            vim.cmd.colorscheme("nightfox")
+        end
+    end,
+})
+
 -- ================================================================================================
 -- PLUGINS
 -- ================================================================================================
 vim.pack.add({
     { src = "https://github.com/Saghen/blink.cmp", version = vim.version.range('*') },
-    { src = "https://github.com/gabefiori/kanagawa.nvim", version = "custom" },
+    -- { src = "https://github.com/lumertzg/kanagawa.nvim", version = "custom" },
+    { src = "https://github.com/lumertzg/nightfox.nvim", version = "custom" },
     { src = "https://github.com/echasnovski/mini.nvim" },
     { src = "https://github.com/stevearc/oil.nvim" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
@@ -82,12 +95,19 @@ require('blink.cmp').setup({
     fuzzy = { implementation = "prefer_rust_with_warning" },
 })
 
-require("kanagawa").setup({
-    theme = "custom",    
-    background = {     
-        dark = "custom", 
-        light = "lotus"
-    },
+-- require("kanagawa").setup({
+--     theme = "custom",    
+--     background = {     
+--         dark = "custom", 
+--         light = "lotus"
+--     },
+-- })
+
+require('nightfox').setup({
+  options = {
+    transparent = true,     -- Disable setting background
+    terminal_colors = true,  -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+  }
 })
 
 require('mini.pairs').setup()
@@ -121,7 +141,7 @@ vim.keymap.set("n", "<leader>fg", fzf.live_grep_native)
 vim.keymap.set("v", "<leader>fg", fzf.grep_visual)
 vim.keymap.set("n", "<leader>fr", ":FzfLua live_grep_native resume=true<CR>")
 
-vim.cmd.colorscheme("kanagawa")
+vim.cmd.colorscheme("nightfox")
 
 -- ================================================================================================
 -- TREESITTER
