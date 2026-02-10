@@ -1,9 +1,19 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-selected=$(find ~/dev -mindepth 0 -maxdepth 1 -path '*/.git' -prune -o -type d -print | fzf)
+SEARCH_ROOT="${1:-$HOME/dev}"
 
-if [[ -z $selected ]]; then
-    exit 0
-fi
+command -v fzf >/dev/null || {
+    printf 'fzf is not installed\n' >&2
+    exit 1
+}
 
-echo $selected
+[[ -d "$SEARCH_ROOT" ]] || {
+    printf 'Directory does not exist: %s\n' "$SEARCH_ROOT" >&2
+    exit 1
+}
+
+selected="$(find "$SEARCH_ROOT" -mindepth 1 -maxdepth 1 -type d -print | fzf --height=40% --layout=reverse --scheme=path)"
+
+[[ -n "${selected:-}" ]] || exit 0
+printf '%s\n' "$selected"
