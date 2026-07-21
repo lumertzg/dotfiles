@@ -113,6 +113,7 @@ fzf.setup({
 
 require("oil").setup({
 	columns = { "permissions", "size", "mtime" },
+	watch_for_changes = true,
 	view_options = { show_hidden = true },
 	keymaps = {
 		["<C-h>"] = false,
