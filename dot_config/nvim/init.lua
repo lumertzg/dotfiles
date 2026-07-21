@@ -90,8 +90,14 @@ require("kanagawa").setup({
 	},
 })
 
-require("mini.pairs").setup()
-require("mini.ai").setup()
+require('mini.pairs').setup()
+require('mini.ai').setup()
+require('mini.diff').setup({ view = {
+    style = 'sign',
+    signs = {
+        add = '┃', change = '┃', delete = '┃' }
+    }
+})
 
 local fzf = require("fzf-lua")
 fzf.setup({
