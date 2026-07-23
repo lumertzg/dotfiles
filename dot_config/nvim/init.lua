@@ -127,6 +127,8 @@ vim.keymap.set("n", "<leader>fw", fzf.grep_cword)
 vim.keymap.set("n", "<leader>fg", fzf.live_grep_native)
 vim.keymap.set("v", "<leader>fg", fzf.grep_visual)
 vim.keymap.set("n", "<leader>fr", ":FzfLua live_grep_native resume=true<CR>")
+vim.keymap.set("n", "<leader>gs", fzf.git_status)
+vim.keymap.set("n", "<leader>gc", fzf.git_commits)
 
 vim.cmd.colorscheme("kanagawa")
 
