@@ -23,7 +23,7 @@ if type -q bat
 end
 
 if type -q dn 
-    dn init fish | source
+    skill completion fish | source
 end
 
 if type -q mise 
