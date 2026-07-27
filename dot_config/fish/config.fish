@@ -22,7 +22,7 @@ if type -q bat
     alias cat "bat"
 end
 
-if type -q dn 
+if type -q skill 
     skill completion fish | source
 end
 
