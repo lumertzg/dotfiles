@@ -1,5 +1,5 @@
 function sp
-    set dir (search-dirs)
+    set dir (scout --no-tmux)
 
     if test -n "$dir"
         cd "$dir"
