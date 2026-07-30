@@ -1,0 +1,52 @@
+# Wave Light theme for tuicr.
+
+panel_bg = "#f2ecbc"
+bg_highlight = "#e4d794"
+fg_primary = "#545464"
+fg_secondary = "#43436c"
+fg_dim = "#8a8980"
+
+diff_add = "#6e915f"
+diff_add_bg = "#f2ecbc"
+diff_del = "#d7474b"
+diff_del_bg = "#f2ecbc"
+diff_context = "#545464"
+diff_hunk_header = "#4d699b"
+expanded_context_fg = "#8a8980"
+
+syntax_add_bg = "#f2ecbc"
+syntax_del_bg = "#f2ecbc"
+syntax_theme = "wave-light.tmTheme"
+
+file_added = "#6e915f"
+file_modified = "#de9800"
+file_deleted = "#d7474b"
+file_renamed = "#b35b79"
+
+reviewed = "#6e915f"
+pending = "#de9800"
+
+comment_note = "#4d699b"
+comment_suggestion = "#5e857a"
+comment_issue = "#e82424"
+comment_praise = "#6f894e"
+
+border_focused = "#4d699b"
+border_unfocused = "#a09cac"
+status_bar_bg = "#d5cea3"
+cursor_color = "#cc6d00"
+cursor_line_bg = "#e4d794"
+branch_name = "#597b75"
+help_indicator = "#8a8980"
+
+message_info_fg = "#f2ecbc"
+message_info_bg = "#5a7785"
+message_warning_fg = "#f2ecbc"
+message_warning_bg = "#cc6d00"
+message_error_fg = "#f2ecbc"
+message_error_bg = "#c84053"
+update_badge_fg = "#f2ecbc"
+update_badge_bg = "#cc6d00"
+
+mode_fg = "#f2ecbc"
+mode_bg = "#4d699b"

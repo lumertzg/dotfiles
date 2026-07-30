@@ -67,12 +67,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- ================================================================================================
 vim.pack.add({
 	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("*") },
-	{ src = "https://github.com/lumertzg/kanagawa.nvim", version = "custom" },
+	{ src = "https://github.com/lumertzg/wave.nvim" },
 	{ src = "https://github.com/echasnovski/mini.nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
 })
+
+vim.cmd.colorscheme("wave")
 
 require("blink.cmp").setup({
 	keymap = { preset = "default" },
@@ -80,14 +82,6 @@ require("blink.cmp").setup({
 	sources = { default = { "lsp", "path", "buffer" } },
 	cmdline = { enabled = false },
 	fuzzy = { implementation = "prefer_rust_with_warning" },
-})
-
-require("kanagawa").setup({
-	theme = "custom",
-	background = {
-		dark = "custom",
-		light = "lotus",
-	},
 })
 
 require('mini.pairs').setup()
@@ -129,8 +123,6 @@ vim.keymap.set("v", "<leader>fg", fzf.grep_visual)
 vim.keymap.set("n", "<leader>fr", ":FzfLua live_grep_native resume=true<CR>")
 vim.keymap.set("n", "<leader>gs", fzf.git_status)
 vim.keymap.set("n", "<leader>gc", fzf.git_commits)
-
-vim.cmd.colorscheme("kanagawa")
 
 -- ================================================================================================
 -- TREESITTER

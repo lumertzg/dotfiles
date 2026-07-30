@@ -1,0 +1,52 @@
+# Wave theme for tuicr.
+
+panel_bg = "#1f1f28"
+bg_highlight = "#363646"
+fg_primary = "#dcd7ba"
+fg_secondary = "#c8c093"
+fg_dim = "#727169"
+
+diff_add = "#98bb6c"
+diff_add_bg = "#1f1f28"
+diff_del = "#ff5d62"
+diff_del_bg = "#1f1f28"
+diff_context = "#c8c093"
+diff_hunk_header = "#7e9cd8"
+expanded_context_fg = "#727169"
+
+syntax_add_bg = "#1f1f28"
+syntax_del_bg = "#1f1f28"
+syntax_theme = "wave.tmTheme"
+
+file_added = "#76946a"
+file_modified = "#dca561"
+file_deleted = "#c34043"
+file_renamed = "#957fb8"
+
+reviewed = "#76946a"
+pending = "#dca561"
+
+comment_note = "#7e9cd8"
+comment_suggestion = "#6a9589"
+comment_issue = "#e82424"
+comment_praise = "#98bb6c"
+
+border_focused = "#7e9cd8"
+border_unfocused = "#54546d"
+status_bar_bg = "#16161d"
+cursor_color = "#e6c384"
+cursor_line_bg = "#2a2a37"
+branch_name = "#7aa89f"
+help_indicator = "#727169"
+
+message_info_fg = "#16161d"
+message_info_bg = "#658594"
+message_warning_fg = "#16161d"
+message_warning_bg = "#dca561"
+message_error_fg = "#16161d"
+message_error_bg = "#e82424"
+update_badge_fg = "#16161d"
+update_badge_bg = "#dca561"
+
+mode_fg = "#16161d"
+mode_bg = "#7e9cd8"
