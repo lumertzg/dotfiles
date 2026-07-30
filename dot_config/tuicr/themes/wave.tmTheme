@@ -30,8 +30,6 @@
       <dict>
         <key>foreground</key>
         <string>#A3D4D5</string>
-        <key>fontStyle</key>
-        <string>italic</string>
       </dict>
     </dict>
     <dict>
