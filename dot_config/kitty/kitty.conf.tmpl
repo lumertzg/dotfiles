@@ -1,3 +1,5 @@
+# vim:ft=kitty
+
 font_family Berkeley Mono
 
 {{- if eq .chezmoi.os "darwin" }}
@@ -14,8 +16,15 @@ input_delay 0
 repaint_delay 2
 sync_to_monitor no
 wayland_enable_ime no
-
 enable_audio_bell no
+
+allow_remote_control socket-only
+
+{{- if eq .chezmoi.os "darwin" }}
+listen_on unix:scout
+{{- else if eq .chezmoi.os "linux" }}
+listen_on unix:@scout
+{{- end }}
 
 enabled_layouts splits:split_axis=horizontal
 map ctrl+b>o launch --cwd=current --location=vsplit
@@ -38,21 +47,26 @@ map ctrl+b>k neighboring_window up
 map ctrl+b>r start_resizing_window
 map ctrl+b>[ show_scrollback
 
-tab_bar_align center
-tab_bar_style separator
-tab_separator " | "
-tab_title_template "{index}:{title}"
-tab_bar_margin_height 0.0 0.0
+map ctrl+b>f launch --type=overlay --cwd=current scout --backend=kitty
+
+tab_bar_filter session:~
+tab_bar_style custom
+tab_separator ""
+tab_title_template "{index}:{tab.active_oldest_exe}"
+active_tab_title_template "{index}:{tab.active_oldest_exe}"
+tab_bar_align left
 tab_bar_edge top
 tab_bar_background none
+tab_bar_min_tabs 1
 
-# vim:ft=kitty
+############################################################################
+THEME
+############################################################################
 
 ## name: Kanagawa
 ## license: MIT
 ## author: Tommaso Laurenzi
 ## upstream: https://github.com/rebelot/kanagawa.nvim/
-
 
 background #1F1F28
 foreground #DCD7BA
@@ -62,11 +76,10 @@ url_color #72A7BC
 cursor #C8C093
 
 # Tabs
-active_tab_background #1F1F28
-active_tab_foreground #C8C093
-inactive_tab_background  #1F1F28
-inactive_tab_foreground #727169
-#tab_bar_background #15161E
+active_tab_foreground #1F1F28
+active_tab_background #DCD7BA
+inactive_tab_foreground #DCD7BA
+inactive_tab_background #1F1F28
 
 # normal
 color0 #16161D
