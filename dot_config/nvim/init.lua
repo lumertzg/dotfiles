@@ -70,6 +70,7 @@ vim.pack.add({
 	{ src = "https://github.com/lumertzg/wave.nvim" },
 	{ src = "https://github.com/echasnovski/mini.nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/folke/zen-mode.nvim" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
 })
@@ -93,17 +94,45 @@ require('mini.diff').setup({ view = {
     }
 })
 
-local fzf = require("fzf-lua")
-fzf.setup({
-	{ "ivy", "hide" },
-	-- files = { previewer = false },
-	previewers = {
-		builtin = {
-			syntax = true,
-			treesitter = false,
+require("zen-mode").setup({
+	window = {
+		options = {
+			colorcolumn = "",
+			number = false,
+			relativenumber = false,
+			signcolumn = "no",
+			wrap = true,
 		},
 	},
 })
+
+local fzf = require("fzf-lua")
+  fzf.setup({
+    { "ivy", "hide" },
+
+    keymap = {
+      builtin = {
+        ["<C-d>"] = "preview-half-page-down",
+        ["<C-u>"] = "preview-half-page-up",
+        ["<C-j>"] = "preview-down",
+        ["<C-k>"] = "preview-up",
+      },
+      fzf = {
+        ["ctrl-d"] = "preview-half-page-down",
+        ["ctrl-u"] = "preview-half-page-up",
+        ["ctrl-j"] = "preview-down",
+        ["ctrl-k"] = "preview-up",
+      },
+    },
+
+    previewers = {
+      builtin = {
+        syntax = true,
+        treesitter = false,
+      },
+    },
+  })
+
 
 require("oil").setup({
 	columns = { "permissions", "size", "mtime" },
