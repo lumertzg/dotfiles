@@ -1,0 +1,70 @@
+onboarding = false
+
+[theme]
+name = "kanagawa"
+auto_switch = false
+
+[theme.custom]
+surface_dim = "#363646"
+overlay0 = "#a6a69c"
+
+[keys]
+prefix = "ctrl+b"
+reload_config = "prefix+r"
+new_tab = "prefix+c"
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+split_horizontal = "prefix+e"
+split_vertical = "prefix+o"
+
+# These defaults conflict with the tmux-style bindings above.
+edit_scrollback = ""
+open_notification_target = ""
+goto = ""
+
+[[keys.command]]
+key = "prefix+g"
+type = "pane"
+command = "lazygit"
+description = "open lazygit"
+
+[[keys.command]]
+key = "prefix+f"
+type = "pane"
+command = "scout"
+description = "open scout"
+
+[[keys.command]]
+key = "prefix+t"
+type = "pane"
+command = "exec \"${SHELL:-sh}\""
+description = "open scratch terminal"
+
+[[keys.command]]
+key = "prefix+ctrl+k"
+type = "shell"
+command = "\"$HERDR_BIN_PATH\" pane resize --direction up --amount 0.05 --pane \"$HERDR_ACTIVE_PANE_ID\""
+description = "resize pane up"
+
+[[keys.command]]
+key = "prefix+ctrl+j"
+type = "shell"
+command = "\"$HERDR_BIN_PATH\" pane resize --direction down --amount 0.05 --pane \"$HERDR_ACTIVE_PANE_ID\""
+description = "resize pane down"
+
+[[keys.command]]
+key = "prefix+ctrl+h"
+type = "shell"
+command = "\"$HERDR_BIN_PATH\" pane resize --direction left --amount 0.05 --pane \"$HERDR_ACTIVE_PANE_ID\""
+description = "resize pane left"
+
+[[keys.command]]
+key = "prefix+ctrl+l"
+type = "shell"
+command = "\"$HERDR_BIN_PATH\" pane resize --direction right --amount 0.05 --pane \"$HERDR_ACTIVE_PANE_ID\""
+description = "resize pane right"
+
+[ui]
+agent_panel_sort = "spaces"
