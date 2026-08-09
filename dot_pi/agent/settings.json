@@ -1,0 +1,17 @@
+{
+  "lastChangelogVersion": "0.84.1",
+  "theme": "dark",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.6-sol",
+  "defaultThinkingLevel": "medium",
+  "subagents": {
+    "defaultModel": "openai-codex/gpt-5.6-luna",
+    "defaultThinking": "xhigh"
+  },
+  "packages": [
+    "npm:@ff-labs/pi-fff",
+    "npm:pi-subagents",
+    "npm:pi-web-access"
+  ],
+  "hideThinkingBlock": false
+}

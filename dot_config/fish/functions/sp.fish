@@ -1,5 +1,5 @@
 function sp
-    set dir (scout --no-tmux)
+    set dir (scout --backend path)
 
     if test -n "$dir"
         cd "$dir"
