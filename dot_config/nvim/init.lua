@@ -157,28 +157,57 @@ vim.keymap.set("n", "<leader>gc", fzf.git_commits)
 -- TREESITTER
 -- ================================================================================================
 local treesitter = require("nvim-treesitter")
-local parsers = treesitter.get_installed()
 
-treesitter.install({
+local parsers = {
 	"bash",
-	"fish",
-	"toml",
-	"yaml",
-	"json",
-	"vim",
-	"vimdoc",
 	"c",
+	"fish",
 	"go",
+	"javascript",
+	"json",
 	"lua",
 	"odin",
-	"zig",
 	"python",
-	"javascript",
+	"toml",
+	"tsx",
 	"typescript",
-})
+	"vim",
+	"vimdoc",
+	"yaml",
+	"zig",
+}
+
+-- Installation is asynchronous; wait so a parser can be used on the first startup.
+treesitter.install(parsers):wait(300000)
+
+-- Neovim filetypes do not always match their parser names.
+vim.treesitter.language.register("bash", { "bash", "sh" })
+vim.treesitter.language.register("javascript", { "javascript", "javascriptreact" })
+vim.treesitter.language.register("tsx", { "typescriptreact" })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = parsers,
+	pattern = {
+		"bash",
+		"c",
+		"checkhealth",
+		"fish",
+		"go",
+		"help",
+		"javascript",
+		"javascriptreact",
+		"json",
+		"lua",
+		"odin",
+		"python",
+		"sh",
+		"toml",
+		"typescript",
+		"typescriptreact",
+		"vim",
+		"vimdoc",
+		"yaml",
+		"zig",
+	},
 	callback = function()
 		vim.treesitter.start()
 		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"

@@ -1,3 +1,5 @@
 function fish_user_key_bindings
-  fzf --fish | source
+    if type -q fzf
+        fzf --fish | source
+    end
 end

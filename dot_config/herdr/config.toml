@@ -33,8 +33,8 @@ description = "open lazygit"
 [[keys.command]]
 key = "prefix+f"
 type = "pane"
-command = "scout"
-description = "open scout"
+command = "sh -c 'dir=$(scout --backend path) || exit; [ -n \"$dir\" ] && cd \"$dir\"; exec \"${SHELL:-sh}\"'"
+description = "open a shell in a selected project"
 
 [[keys.command]]
 key = "prefix+t"

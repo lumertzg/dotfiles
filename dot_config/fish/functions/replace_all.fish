@@ -7,5 +7,5 @@ function replace_all
     set search_string $argv[1]
     set replace_string $argv[2]
 
-    rg -l $search_string | xargs sd $search_string $replace_string
+    rg --null -l -- $search_string | xargs --null --no-run-if-empty sd -- $search_string $replace_string
 end
