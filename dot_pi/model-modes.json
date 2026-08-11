@@ -12,6 +12,6 @@
   "default": {
     "provider": "openai-codex",
     "model": "gpt-5.6-sol",
-    "thinkingLevel": "medium"
+    "thinkingLevel": "low"
   }
 }
