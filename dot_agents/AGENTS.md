@@ -15,5 +15,6 @@
 ## Coding
 
 - Never commit or push unless asked. Leave the diff ready for review.
-- **Comments**: Only add comments where they clarify purpose, contracts, or invariants. Plain-English and concise. Fewer comments beat more.
+- Before opening a pull request, ask the user to review and approve its title and body.
+- Only add comments where they clarify purpose, contracts, or invariants. Use plain English and be concise. Fewer comments are better.
 - Prefer language tools over text search when they fit. For example, use `go doc` for Go and `zigdoc` for Zig.
