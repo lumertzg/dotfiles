@@ -62,13 +62,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "qf",
-	callback = function(ev)
-		vim.keymap.set("n", "<C-n>", "<cmd>cnext | copen<CR>", { buffer = ev.buf })
-		vim.keymap.set("n", "<C-p>", "<cmd>cprev | copen<CR>", { buffer = ev.buf })
-	end,
-})
+local references = require("references")
+references.setup()
 
 -- ================================================================================================
 -- PLUGINS
@@ -223,7 +218,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
 
-		vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0 })
+		vim.keymap.set("n", "gr", references.find, { buffer = 0 })
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
 		vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
