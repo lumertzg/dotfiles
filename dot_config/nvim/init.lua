@@ -73,6 +73,18 @@ vim.api.nvim_create_autocmd("FileType", {
 -- ================================================================================================
 -- PLUGINS
 -- ================================================================================================
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		local name, kind = ev.data.spec.name, ev.data.kind
+		if name == "fff.nvim" and (kind == "install" or kind == "update") then
+			if not ev.data.active then
+				vim.cmd.packadd("fff.nvim")
+			end
+			require("fff.download").download_or_build_binary()
+		end
+	end,
+})
+
 vim.pack.add({
 	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("*") },
 	{ src = "https://github.com/lumertzg/wave.nvim" },
@@ -80,7 +92,7 @@ vim.pack.add({
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/folke/zen-mode.nvim" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
-	{ src = "https://github.com/ibhagwan/fzf-lua" },
+	{ src = "https://github.com/dmtrKovalenko/fff.nvim" },
 })
 
 vim.cmd.colorscheme("wave")
@@ -114,33 +126,15 @@ require("zen-mode").setup({
 	},
 })
 
-local fzf = require("fzf-lua")
-  fzf.setup({
-    { "ivy", "hide" },
-
-    keymap = {
-      builtin = {
-        ["<C-d>"] = "preview-half-page-down",
-        ["<C-u>"] = "preview-half-page-up",
-        ["<C-j>"] = "preview-down",
-        ["<C-k>"] = "preview-up",
-      },
-      fzf = {
-        ["ctrl-d"] = "preview-half-page-down",
-        ["ctrl-u"] = "preview-half-page-up",
-        ["ctrl-j"] = "preview-down",
-        ["ctrl-k"] = "preview-up",
-      },
-    },
-
-    previewers = {
-      builtin = {
-        syntax = true,
-        treesitter = false,
-      },
-    },
-  })
-
+local fff = require("fff")
+fff.setup({
+	lazy_sync = true,
+	prompt = "> ",
+	keymaps = {
+		move_up = { "<Up>", "<C-p>", "<C-k>" },
+		move_down = { "<Down>", "<C-n>", "<C-j>" },
+	},
+})
 
 require("oil").setup({
 	columns = { "permissions", "size", "mtime" },
@@ -153,13 +147,8 @@ require("oil").setup({
 })
 
 vim.keymap.set("n", "<C-n>", ":Oil<CR>")
-vim.keymap.set("n", "<leader>ff", fzf.files)
-vim.keymap.set("n", "<leader>fw", fzf.grep_cword)
-vim.keymap.set("n", "<leader>fg", fzf.live_grep_native)
-vim.keymap.set("v", "<leader>fg", fzf.grep_visual)
-vim.keymap.set("n", "<leader>fr", ":FzfLua live_grep_native resume=true<CR>")
-vim.keymap.set("n", "<leader>gs", fzf.git_status)
-vim.keymap.set("n", "<leader>gc", fzf.git_commits)
+vim.keymap.set("n", "<leader>ff", fff.find_files)
+vim.keymap.set("n", "<leader>fg", fff.live_grep)
 
 -- ================================================================================================
 -- TREESITTER
