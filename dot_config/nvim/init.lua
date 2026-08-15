@@ -65,6 +65,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 local references = require("references")
 references.setup()
 
+require("notes").setup()
+
 -- ================================================================================================
 -- PLUGINS
 -- ================================================================================================
