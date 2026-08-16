@@ -33,8 +33,24 @@ local function validate_date(date)
 	end
 end
 
+local function resolve_date(date)
+	local offsets = { yesterday = -1, today = 0, tomorrow = 1 }
+	local offset = offsets[date or "today"]
+	if offset == nil then
+		return date
+	end
+
+	local now = os.date("*t")
+	return os.date("%Y-%m-%d", os.time({
+		year = now.year,
+		month = now.month,
+		day = now.day + offset,
+		hour = 12,
+	}))
+end
+
 function M.open(date)
-	date = date or os.date("%Y-%m-%d")
+	date = resolve_date(date)
 	validate_date(date)
 
 	if vim.fn.isdirectory(config.directory) == 0 then
@@ -63,6 +79,9 @@ function M.setup(opts)
 	end, {
 		desc = "Open a dated Markdown note",
 		nargs = "?",
+		complete = function()
+			return { "yesterday", "today", "tomorrow" }
+		end,
 		force = true,
 	})
 end
