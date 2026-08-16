@@ -20,8 +20,10 @@ split_horizontal = "prefix+e"
 split_vertical = "prefix+o"
 navigate_workspace_up = "p"
 navigate_workspace_down = "n"
-previous_agent = "prefix+u"
-next_agent = "prefix+d"
+previous_agent = "prefix+p"
+next_agent = "prefix+n"
+previous_tab = ""
+next_tab = ""
 
 # These defaults conflict with the tmux-style bindings above.
 edit_scrollback = ""
