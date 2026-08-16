@@ -1,2 +1,9 @@
-# Keep the diff focused on the file list and content.
-menu_bar = false
+menu_bar = true
+theme = "github-dark-default"
+mode = "auto"
+line_numbers = true
+wrap_lines = true
+hunk_headers = true
+agent_notes = true
+copy_decorations = false
+cursor_line = "row"
