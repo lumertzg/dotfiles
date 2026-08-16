@@ -1,5 +1,9 @@
 onboarding = false
 
+[terminal]
+default_shell = "fish"
+shell_mode = "login"
+
 [theme]
 name = "kanagawa"
 auto_switch = false
@@ -45,7 +49,7 @@ description = "switch or open project space"
 [[keys.command]]
 key = "prefix+t"
 type = "pane"
-command = "exec \"${SHELL:-sh}\""
+command = "exec fish --login"
 description = "open scratch terminal"
 
 [[keys.command]]
