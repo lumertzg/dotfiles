@@ -15,7 +15,7 @@ set -g __fish_git_prompt_char_upstream_diverged '⇕'
 fish_add_path $HOME/.cargo/bin $HOME/go/bin $HOME/.odin $HOME/.local/bin $HOME/scripts
 
 set -gx EDITOR nvim
-set -gx SCOUT_BACKEND tmux
+set -gx SCOUT_BACKEND herdr
 set -gx KUBE_EDITOR nvim
 set -gx MANPAGER "nvim +Man!"
 
