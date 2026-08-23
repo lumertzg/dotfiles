@@ -27,8 +27,17 @@ local function highlight_item()
 	highlighted_buf = item.bufnr
 end
 
-local function move(command)
-	vim.cmd(command)
+local function move(direction)
+	local list = vim.fn.getqflist({ idx = 0, size = 0 })
+	if list.size == 0 then
+		return
+	end
+
+	if direction == "next" then
+		vim.cmd(list.idx == list.size and "cfirst" or "cnext")
+	else
+		vim.cmd(list.idx == 1 and "clast" or "cprev")
+	end
 	highlight_item()
 	vim.cmd.copen()
 end
@@ -54,10 +63,10 @@ function M.setup()
 		pattern = "qf",
 		callback = function(ev)
 			vim.keymap.set("n", "<C-n>", function()
-				move("cnext")
+				move("next")
 			end, { buffer = ev.buf })
 			vim.keymap.set("n", "<C-p>", function()
-				move("cprev")
+				move("previous")
 			end, { buffer = ev.buf })
 			vim.keymap.set("n", "<Esc>", close, { buffer = ev.buf })
 			vim.keymap.set("n", "q", close, { buffer = ev.buf })
